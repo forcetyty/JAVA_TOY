@@ -1,6 +1,6 @@
 package student_management;
 
-import java.util.Scanner;
+import java.util.*;
 
 /*
 -- 학생관리
@@ -12,6 +12,9 @@ import java.util.Scanner;
 
  */
 public class StudentMain {
+
+    static List<StudentVO> studentList = new ArrayList<>();
+
     public static void main(String[] args) {
         // 학생관리 시스템
         Scanner scan = new Scanner(System.in);
@@ -57,7 +60,7 @@ public class StudentMain {
         boolean callSign = true;
         if(sysCall == 1) {
             System.out.println(" ---- 학생등록 ---- ");
-
+            studentAdd();
             callSign = true;
 
         } else if(sysCall == 2){
@@ -77,7 +80,7 @@ public class StudentMain {
 
         } else if(sysCall == 5){
             System.out.println(" ---- 학생 정보 출력 ---- ");
-
+            studentPrint();
             callSign = true;
 
         }else if(sysCall == 0 ){
@@ -89,6 +92,24 @@ public class StudentMain {
         System.out.println(" 시스템 호출 >>>> " + sysCall);
 
         return callSign;
+    }
+
+    public static void studentAdd(){
+        StudentVO vo = new StudentVO();
+
+        String name = "김철수";
+        int grade = 1;
+
+        vo.setGrade(grade);
+        vo.setName(name);
+
+        studentList.add(vo);
+
+    }
+
+    public static void studentPrint(){
+        System.out.println(" 학년 : " + studentList.get(0).getGrade());
+        System.out.println(" 이름 : " + studentList.get(0).getName());
     }
 
 }
