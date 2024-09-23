@@ -97,19 +97,42 @@ public class StudentMain {
     public static void studentAdd(){
         StudentVO vo = new StudentVO();
 
-        String name = "김철수";
-        int grade = 1;
+        Scanner scanName = new Scanner(System.in);
+        Scanner scanGrade = new Scanner(System.in);
+        Scanner scanHeight = new Scanner(System.in);
+        Scanner scanWeight = new Scanner(System.in);
+        Scanner scanUID = new Scanner(System.in);
 
-        vo.setGrade(grade);
-        vo.setName(name);
+        System.out.print(">>>> 학생 이름 입력 : ");
+        vo.setName(scanName.nextLine());
+
+        System.out.print(">>>> 학년 입력 : ");
+        vo.setGrade(scanGrade.nextInt());
+
+        System.out.print(">>>> 키 입력 : ");
+        vo.setHeight(scanHeight.nextInt());
+
+        System.out.print(">>>> 몸무게 입력 : ");
+        vo.setWeight(scanWeight.nextInt());
+
+        System.out.print(">>>> 고유번호 입력 : ");
+        vo.setUid(scanUID.nextLine());
 
         studentList.add(vo);
 
     }
 
     public static void studentPrint(){
-        System.out.println(" 학년 : " + studentList.get(0).getGrade());
-        System.out.println(" 이름 : " + studentList.get(0).getName());
+
+        for(int i = 0; i < studentList.size(); i++){
+            System.out.println(" >>>> 학생 신상정보 ");
+            System.out.println(" 이름 : " + studentList.get(i).getName());
+            System.out.println(" 학년 : " + studentList.get(i).getGrade());
+            System.out.println(" 키 : " + studentList.get(i).getHeight());
+            System.out.println(" 몸무게 : " + studentList.get(i).getWeight());
+            System.out.println(" 고유번호 : " + studentList.get(i).getUid());
+        }
+
     }
 
 }
