@@ -22,6 +22,7 @@ public class StudentMain {
         boolean pass = true;
         while (pass) {
             int sysNum = 0;
+            System.out.println();
             System.out.println("---------------------------------------");
             System.out.println("------------- 학생관리 시스템 -------------");
             System.out.println("---------------------------------------");
@@ -65,7 +66,7 @@ public class StudentMain {
 
         } else if(sysCall == 2){
             System.out.println(" ---- 학생 재적 목록 ---- ");
-
+            studentList();
             callSign = true;
 
         } else  if(sysCall == 3){
@@ -88,8 +89,6 @@ public class StudentMain {
 
             callSign = false;
         }
-
-        System.out.println(" 시스템 호출 >>>> " + sysCall);
 
         return callSign;
     }
@@ -123,15 +122,39 @@ public class StudentMain {
     }
 
     public static void studentPrint(){
-
+        System.out.println(" >>>>>>>>>>>>>>>>>>>>> 학생 신상 정보 출력 ");
         for(int i = 0; i < studentList.size(); i++){
-            System.out.println(" >>>> 학생 신상정보 ");
+            System.out.println(" >>>> 학생 : " + studentList.get(i).getName() );
             System.out.println(" 이름 : " + studentList.get(i).getName());
             System.out.println(" 학년 : " + studentList.get(i).getGrade());
             System.out.println(" 키 : " + studentList.get(i).getHeight());
             System.out.println(" 몸무게 : " + studentList.get(i).getWeight());
             System.out.println(" 고유번호 : " + studentList.get(i).getUid());
+            System.out.println(" >>>>>>>>>>>>>>>>>>>>>>>> ");
         }
+
+    }
+
+    public  static  void studentList(){
+        System.out.println(" >>>>>>>>>>>>>>>>>>>>> 학생 현황 ");
+        System.out.println(" >>> 총 제적 학생 : " + studentList.size() + " 명 ");
+        int gradeNo1 = 0;
+        int gradeNo2 = 0;
+        int gradeNo3 = 0;
+
+        for(int i = 0; i <  studentList.size(); i++){
+            if(studentList.get(i).getGrade() == 1){
+                gradeNo1++;
+
+            } else if(studentList.get(i).getGrade() == 2) {
+                gradeNo2++;
+
+            } else {
+                gradeNo3++;
+            }
+        }
+
+        System.out.println(" 1학년 학생 : " + gradeNo1 + " 명, 2학년 학생 : " + gradeNo2 + " 명, 3학년 학생 : " + gradeNo3);
 
     }
 
