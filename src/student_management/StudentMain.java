@@ -14,6 +14,7 @@ import java.util.*;
 public class StudentMain {
 
     static List<StudentVO> studentList = new ArrayList<>();
+    static  List<StudentInfoVO> studentInfoList = new ArrayList<>();
 
     public static void main(String[] args) {
         // 학생관리 시스템
@@ -71,7 +72,7 @@ public class StudentMain {
 
         } else  if(sysCall == 3){
             System.out.println(" ---- 학생 신체정보 입력 ----- ");
-
+            studentAddInfo();
             callSign = true;
 
         } else if(sysCall == 4){
@@ -98,8 +99,6 @@ public class StudentMain {
 
         Scanner scanName = new Scanner(System.in);
         Scanner scanGrade = new Scanner(System.in);
-        Scanner scanHeight = new Scanner(System.in);
-        Scanner scanWeight = new Scanner(System.in);
         Scanner scanUID = new Scanner(System.in);
 
         System.out.print(">>>> 학생 이름 입력 : ");
@@ -108,17 +107,44 @@ public class StudentMain {
         System.out.print(">>>> 학년 입력 : ");
         vo.setGrade(scanGrade.nextInt());
 
-        System.out.print(">>>> 키 입력 : ");
-        vo.setHeight(scanHeight.nextInt());
-
-        System.out.print(">>>> 몸무게 입력 : ");
-        vo.setWeight(scanWeight.nextInt());
-
         System.out.print(">>>> 고유번호 입력 : ");
         vo.setUid(scanUID.nextLine());
 
         studentList.add(vo);
 
+    }
+
+    public static void studentAddInfo(){
+        StudentInfoVO infoVo = new StudentInfoVO();
+        Scanner scanWeight = new Scanner(System.in);
+        Scanner scanHeight = new Scanner(System.in);
+        Scanner scanUid = new Scanner(System.in);
+
+        System.out.println(" >>>>>>>>>>>>>>>>>>>> 학생 목록 및 고유번호 ");
+        for(int i = 0; i < studentList.size(); i++){
+            System.out.println(" >>>>>> 학생이름 : " + studentList.get(i).getName() + " 고유번호 : " + studentList.get(i).getUid());
+        }
+
+        System.out.print(" >>>>> 학생 고유번호를 입력하세요 : ");
+        infoVo.setUid(scanUid.nextLine());
+        System.out.print(" >>>>> 학생 키를 입력하세요 : ");
+        infoVo.setHeight(scanHeight.nextInt());
+        System.out.print(" >>>>> 학생 몸무게를 입력하세요 : ");
+        infoVo.setHeight(scanWeight.nextInt());
+
+        studentInfoList.add(infoVo);
+
+        String studentName = "";
+        for(int j = 0; j < studentList.size(); j++){
+            System.out.println(studentInfoList.get(j).getUid());
+            System.out.println(studentList.get(j).getUid());
+
+            if( studentInfoList.get( studentInfoList.size() ).getUid().equals(studentList.get(j).getUid()) ){
+                studentName = studentList.get(j).getName();
+            }
+        }
+
+        System.out.println(" >>>>> " + studentName + " 학생 정보가 입력 완료 되었습니다." );
     }
 
     public static void studentPrint(){
@@ -127,8 +153,10 @@ public class StudentMain {
             System.out.println(" >>>> 학생 : " + studentList.get(i).getName() );
             System.out.println(" 이름 : " + studentList.get(i).getName());
             System.out.println(" 학년 : " + studentList.get(i).getGrade());
-            System.out.println(" 키 : " + studentList.get(i).getHeight());
-            System.out.println(" 몸무게 : " + studentList.get(i).getWeight());
+
+            //System.out.println(" 키 : " + studentList.get(i).getHeight());
+            //System.out.println(" 몸무게 : " + studentList.get(i).getWeight());
+
             System.out.println(" 고유번호 : " + studentList.get(i).getUid());
             System.out.println(" >>>>>>>>>>>>>>>>>>>>>>>> ");
         }
