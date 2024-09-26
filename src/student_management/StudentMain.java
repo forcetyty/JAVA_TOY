@@ -130,15 +130,15 @@ public class StudentMain {
         System.out.print(" >>>>> 학생 키를 입력하세요 : ");
         infoVo.setHeight(scanHeight.nextInt());
         System.out.print(" >>>>> 학생 몸무게를 입력하세요 : ");
-        infoVo.setHeight(scanWeight.nextInt());
+        infoVo.setWeight(scanWeight.nextInt());
 
         studentInfoList.add(infoVo);
-        String studentName = "";
 
+        String studentName = "";
         int studentNum = studentInfoList.size() - 1;
         for(int j = 0; j < studentList.size(); j++){
-            System.out.println(studentInfoList.get(j).getUid());
-            System.out.println(studentList.get(j).getUid() + " - " + studentNum);
+            //System.out.println(studentInfoList.get(j).getUid());
+            //System.out.println(studentList.get(j).getUid() + " - " + studentNum);
 
             // 왜 studentInfoList.get( studentInfoList.size() ).getUid() 이건 안되지
             // IndexOutOfBoundsException 발생이유 - 갯수는 1개 / index는 0
