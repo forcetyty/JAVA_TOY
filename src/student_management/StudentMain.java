@@ -133,13 +133,16 @@ public class StudentMain {
         infoVo.setHeight(scanWeight.nextInt());
 
         studentInfoList.add(infoVo);
-
         String studentName = "";
+
+        int studentNum = studentInfoList.size() - 1;
         for(int j = 0; j < studentList.size(); j++){
             System.out.println(studentInfoList.get(j).getUid());
-            System.out.println(studentList.get(j).getUid());
+            System.out.println(studentList.get(j).getUid() + " - " + studentNum);
 
-            if( studentInfoList.get( studentInfoList.size() ).getUid().equals(studentList.get(j).getUid()) ){
+            // 왜 studentInfoList.get( studentInfoList.size() ).getUid() 이건 안되지
+            // IndexOutOfBoundsException 발생이유 - 갯수는 1개 / index는 0
+            if( studentInfoList.get( studentNum ).getUid().equals(studentList.get(j).getUid()) ){
                 studentName = studentList.get(j).getName();
             }
         }
@@ -153,11 +156,18 @@ public class StudentMain {
             System.out.println(" >>>> 학생 : " + studentList.get(i).getName() );
             System.out.println(" 이름 : " + studentList.get(i).getName());
             System.out.println(" 학년 : " + studentList.get(i).getGrade());
-
+            System.out.println(" 고유번호 : " + studentList.get(i).getUid());
+            // uid를 키값으로 키와 몸무게 Get
+            for(int j = 0; j < studentInfoList.size(); j++){
+                if(studentList.get(i).getUid().toString().equals(studentInfoList.get(j).getUid().toString())){
+                    System.out.println(" 키 : " + studentInfoList.get(j).getHeight());
+                    System.out.println(" 몸무게 : " + studentInfoList.get(j).getWeight());
+                }
+            }
             //System.out.println(" 키 : " + studentList.get(i).getHeight());
             //System.out.println(" 몸무게 : " + studentList.get(i).getWeight());
 
-            System.out.println(" 고유번호 : " + studentList.get(i).getUid());
+
             System.out.println(" >>>>>>>>>>>>>>>>>>>>>>>> ");
         }
 
