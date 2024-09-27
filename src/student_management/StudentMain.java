@@ -94,6 +94,11 @@ public class StudentMain {
         return callSign;
     }
 
+    // 학생 성적 입력 기능
+    public  static void studentScore(){
+
+    }
+
     public static void studentAdd(){
         StudentVO vo = new StudentVO();
 
@@ -157,6 +162,7 @@ public class StudentMain {
             System.out.println(" 이름 : " + studentList.get(i).getName());
             System.out.println(" 학년 : " + studentList.get(i).getGrade());
             System.out.println(" 고유번호 : " + studentList.get(i).getUid());
+
             // uid를 키값으로 키와 몸무게 Get
             for(int j = 0; j < studentInfoList.size(); j++){
                 if(studentList.get(i).getUid().toString().equals(studentInfoList.get(j).getUid().toString())){
