@@ -16,6 +16,8 @@ public class StudentMain {
     static List<StudentVO> studentList = new ArrayList<>();
     static  List<StudentInfoVO> studentInfoList = new ArrayList<>();
 
+    static  List<StudentScoreVO> studentScoreList = new ArrayList<>();
+
     public static void main(String[] args) {
         // 학생관리 시스템
         Scanner scan = new Scanner(System.in);
@@ -58,6 +60,8 @@ public class StudentMain {
     }
     public static boolean systemCall(int sysCall){
 
+        Scanner scan = new Scanner(System.in);
+
         //String callName = "";
         boolean callSign = true;
         if(sysCall == 1) {
@@ -77,12 +81,16 @@ public class StudentMain {
 
         } else if(sysCall == 4){
             System.out.println(" ---- 학생 성적 입력 ---- ");
-
+            studentScore();
             callSign = true;
 
         } else if(sysCall == 5){
             System.out.println(" ---- 학생 정보 출력 ---- ");
-            studentPrint();
+            System.out.print(" >>>>>> 1. 학생 신상정보 출력, 2. 학생 성적정보 출력");
+            int choseNum = scan.nextInt();
+
+            studentPrint(choseNum);
+
             callSign = true;
 
         }else if(sysCall == 0 ){
@@ -96,6 +104,33 @@ public class StudentMain {
 
     // 학생 성적 입력 기능
     public  static void studentScore(){
+        StudentScoreVO scoreVO = new StudentScoreVO();
+        Scanner scan = new Scanner(System.in);
+        System.out.println(" >>>> 학생 성정 입력 ");
+
+        // 등록된 학생 출력
+        for(int i = 0; i < studentList.size(); i++){
+            System.out.println(" >>>>>> 학생이름 : " + studentList.get(i).getName() + " 고유번호 : " + studentList.get(i).getUid());
+        }
+        System.out.print(" >>>> 성적 입력할 학생의 고유번호를 입력해주세요 : ");
+        scoreVO.setUid(scan.nextLine());
+
+        System.out.print(">>>> 수학성적 입력 : " );
+        scoreVO.setMath(scan.nextInt());
+
+        System.out.print(">>>> 영어성적 입력 : ");
+        scoreVO.setEnglish(scan.nextInt());
+
+        System.out.print(">>>> 국어성적 입력 : ");
+        scoreVO.setKorean(scan.nextInt());
+
+        studentScoreList.add(scoreVO);
+
+        for(int j = 0; j < studentList.size(); j++){
+            if(studentList.get(j).getUid().equals(scoreVO.getUid())){
+                System.out.println(" >>>> " + studentList.get(j).getName() + " 학생의 성적이 입력 되었습니다. ");
+            }
+        }
 
     }
 
@@ -139,43 +174,66 @@ public class StudentMain {
 
         studentInfoList.add(infoVo);
 
-        String studentName = "";
-        int studentNum = studentInfoList.size() - 1;
+        //String studentName = "";
+        // int studentNum = studentInfoList.size() - 1;
         for(int j = 0; j < studentList.size(); j++){
             //System.out.println(studentInfoList.get(j).getUid());
             //System.out.println(studentList.get(j).getUid() + " - " + studentNum);
 
             // 왜 studentInfoList.get( studentInfoList.size() ).getUid() 이건 안되지
             // IndexOutOfBoundsException 발생이유 - 갯수는 1개 / index는 0
-            if( studentInfoList.get( studentNum ).getUid().equals(studentList.get(j).getUid()) ){
+            /*
+            if( studentInfoList.get( j ).getUid().equals(studentList.get(j).getUid()) ){
                 studentName = studentList.get(j).getName();
             }
+            */
+
+            if(studentList.get(j).getUid().equals(infoVo.getUid())){
+                System.out.println(" >>>>> " + studentList.get(j).getName() + " 학생 정보가 입력 완료 되었습니다." );
+            }
         }
 
-        System.out.println(" >>>>> " + studentName + " 학생 정보가 입력 완료 되었습니다." );
+        // System.out.println(" >>>>> " + studentName + " 학생 정보가 입력 완료 되었습니다." );
     }
 
-    public static void studentPrint(){
-        System.out.println(" >>>>>>>>>>>>>>>>>>>>> 학생 신상 정보 출력 ");
-        for(int i = 0; i < studentList.size(); i++){
-            System.out.println(" >>>> 학생 : " + studentList.get(i).getName() );
-            System.out.println(" 이름 : " + studentList.get(i).getName());
-            System.out.println(" 학년 : " + studentList.get(i).getGrade());
-            System.out.println(" 고유번호 : " + studentList.get(i).getUid());
+    public static void studentPrint(int choseNum){
 
-            // uid를 키값으로 키와 몸무게 Get
-            for(int j = 0; j < studentInfoList.size(); j++){
-                if(studentList.get(i).getUid().toString().equals(studentInfoList.get(j).getUid().toString())){
-                    System.out.println(" 키 : " + studentInfoList.get(j).getHeight());
-                    System.out.println(" 몸무게 : " + studentInfoList.get(j).getWeight());
+        if(choseNum == 1){
+            System.out.println(" >>>>>>>>>>>>>>>>>>>>> 학생 신상 정보 출력 ");
+            for(int i = 0; i < studentList.size(); i++){
+                System.out.println(" >>>> 학생 신상 정보 <<<< " );
+                System.out.println(" 이름 : " + studentList.get(i).getName());
+                System.out.println(" 학년 : " + studentList.get(i).getGrade());
+                System.out.println(" 고유번호 : " + studentList.get(i).getUid());
+
+                // uid를 키값으로 키와 몸무게 Get
+                for(int j = 0; j < studentInfoList.size(); j++){
+                    if(studentList.get(i).getUid().toString().equals(studentInfoList.get(j).getUid().toString())){
+                        System.out.println(" 키 : " + studentInfoList.get(j).getHeight());
+                        System.out.println(" 몸무게 : " + studentInfoList.get(j).getWeight());
+                    }
                 }
             }
-            //System.out.println(" 키 : " + studentList.get(i).getHeight());
-            //System.out.println(" 몸무게 : " + studentList.get(i).getWeight());
 
+        }else if(choseNum == 2){
+            System.out.println(" >>>>>>>>>>>>>>>>>>>>> 학생 성적 정보 출력 ");
+            for(int i = 0; i < studentList.size(); i++){
+                System.out.println(" >>>> 학생 성적 정보 <<<< ");
+                System.out.println(" 이름 : " + studentList.get(i).getName());
+                System.out.println(" 학년 : " + studentList.get(i).getGrade());
+                System.out.println(" 고유번호 : " + studentList.get(i).getUid());
 
-            System.out.println(" >>>>>>>>>>>>>>>>>>>>>>>> ");
+                for(int j = 0; j < studentScoreList.size(); j++){
+                    if(studentList.get(i).getUid().equals(studentScoreList.get(j).getUid())){
+                        System.out.println(" 수학성적 : " + studentScoreList.get(j).getMath());
+                        System.out.println(" 국어성적 : " + studentScoreList.get(j).getKorean());
+                        System.out.println(" 영어성적 : " + studentScoreList.get(j).getEnglish());
+                    }
+                }
+            }
+
         }
+
 
     }
 
