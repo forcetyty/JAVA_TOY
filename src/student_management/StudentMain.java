@@ -86,9 +86,8 @@ public class StudentMain {
 
         } else if(sysCall == 5){
             System.out.println(" ---- 학생 정보 출력 ---- ");
-            System.out.print(" >>>>>> 1. 학생 신상정보 출력, 2. 학생 성적정보 출력");
+            System.out.print(" >>>>>> 1. 학생 신상정보 출력, 2. 학생 성적정보 출력, 3. 학생 정보 통계 출력");
             int choseNum = scan.nextInt();
-
             studentPrint(choseNum);
 
             callSign = true;
@@ -215,26 +214,60 @@ public class StudentMain {
                 }
             }
 
-        }else if(choseNum == 2){
+        }else if(choseNum == 2) {
             System.out.println(" >>>>>>>>>>>>>>>>>>>>> 학생 성적 정보 출력 ");
-            for(int i = 0; i < studentList.size(); i++){
+            for (int i = 0; i < studentList.size(); i++) {
                 System.out.println(" >>>> 학생 성적 정보 <<<< ");
                 System.out.println(" 이름 : " + studentList.get(i).getName());
                 System.out.println(" 학년 : " + studentList.get(i).getGrade());
                 System.out.println(" 고유번호 : " + studentList.get(i).getUid());
 
-                for(int j = 0; j < studentScoreList.size(); j++){
-                    if(studentList.get(i).getUid().equals(studentScoreList.get(j).getUid())){
+                for (int j = 0; j < studentScoreList.size(); j++) {
+                    if (studentList.get(i).getUid().equals(studentScoreList.get(j).getUid())) {
                         System.out.println(" 수학성적 : " + studentScoreList.get(j).getMath());
                         System.out.println(" 국어성적 : " + studentScoreList.get(j).getKorean());
                         System.out.println(" 영어성적 : " + studentScoreList.get(j).getEnglish());
                     }
                 }
             }
+        } else if (choseNum == 3) {
+            System.out.println(" >>>>>>>>>>>>>>>>>>>>> 학생 정보 통계 출력 ");
+
+            System.out.println(" >>>> 등록된 학생 수 : " + studentList.size() + " 명");
+            int socreNum = studentScoreList.size();
+
+            if( socreNum > 0 ){
+                int mathAvr = 0;
+                int englishAvr = 0;
+                int koreaAvr = 0;
+                for(int i = 0; i < socreNum; i++){
+                    mathAvr += studentScoreList.get(i).getMath();
+                    englishAvr += studentScoreList.get(i).getEnglish();
+                    koreaAvr += studentScoreList.get(i).getKorean();
+                }
+
+                System.out.println(" >>>> 전체 학생 수학 성적 평균 : " + mathAvr/socreNum);
+                System.out.println(" >>>> 전체 학생 영어 성적 평균 : " + englishAvr/socreNum);
+                System.out.println(" >>>> 전체 학생 국어 성적 평균 : " + koreaAvr/socreNum);
+            }
+
+
+            int infoNum = studentInfoList.size();
+
+            if( infoNum > 0 ){
+                int weightAvr = 0;
+                int heightAvr = 0;
+                for(int j = 0; j < infoNum; j++){
+                    weightAvr += studentInfoList.get(j).getWeight();
+                    heightAvr += studentInfoList.get(j).getHeight();
+                }
+
+                System.out.println(" >>>> 전체 학생 키 평균 : " + weightAvr/infoNum);
+                System.out.println(" >>>> 전체 학생 몸무게 평균 : " + weightAvr/infoNum);
+            }
+
 
         }
-
-
     }
 
     public  static  void studentList(){
