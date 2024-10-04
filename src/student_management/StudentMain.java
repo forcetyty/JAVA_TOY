@@ -13,9 +13,13 @@ import java.util.*;
  */
 public class StudentMain {
 
+    // 학생
     static List<StudentVO> studentList = new ArrayList<>();
-    static  List<StudentInfoVO> studentInfoList = new ArrayList<>();
 
+    // 학생개인정보
+    static  List<StudentInfoVO> studentInfoList = new ArrayList<>();
+    
+    // 학생점수
     static  List<StudentScoreVO> studentScoreList = new ArrayList<>();
 
     public static void main(String[] args) {
