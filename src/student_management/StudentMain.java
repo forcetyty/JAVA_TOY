@@ -9,8 +9,8 @@ import java.util.*;
 -- 학생 신체정보 입력
 -- 학생 성적 입력
 -- 학생 정보 출력 -- 키 / 몸무게 / 성적
-
  */
+
 public class StudentMain {
 
     // 학생
@@ -18,7 +18,7 @@ public class StudentMain {
 
     // 학생개인정보
     static  List<StudentInfoVO> studentInfoList = new ArrayList<>();
-    
+
     // 학생점수
     static  List<StudentScoreVO> studentScoreList = new ArrayList<>();
 
