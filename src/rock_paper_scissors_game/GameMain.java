@@ -9,6 +9,7 @@ import java.util.Scanner;
  */
 public class GameMain {
     public static void main(String[] args) {
+
         Scanner scanUser = new Scanner(System.in);
         int ranNum = (int)((Math.random()*3)+1);
         String computerUser = "";
