@@ -23,6 +23,8 @@ public class GameMain {
 
         System.out.println("********************** " + gameSel + " 모드를 선택 하셨습니다 **");
 
+
+
         /*
         Scanner scanUser = new Scanner(System.in);
         int ranNum = (int)((Math.random()*3)+1);
@@ -68,6 +70,11 @@ public class GameMain {
 
         }
         */
+    }
 
+    // 게임 실행 메소드
+    public static int game(){
+        
+        return 0;
     }
 }
