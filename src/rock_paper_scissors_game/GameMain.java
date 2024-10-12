@@ -120,7 +120,19 @@ public class GameMain {
 
             }
 
-        }else if( type == 2){
+        }else if( type == 2 ){
+            // 최후의 승자가 남을때 까지 반복
+            Scanner scanGamer = new Scanner(System.in);
+            Scanner scanUser = new Scanner(System.in);
+            System.out.print(" >>>> 개임할 사용자 수를 입력하세요 : ");
+
+            // 초기 게임 인원 설정
+            int gamer = scanGamer.nextInt();
+            String user = "";   // 사용자가 입력 값
+            for(int i = 0; i < gamer; i++){
+                System.out.print(" >>>> " + ( i + 1 ) + " 번째 : " );
+                user = scanUser.nextLine();
+            }
 
         }
 
