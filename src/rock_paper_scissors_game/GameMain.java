@@ -134,6 +134,12 @@ public class GameMain {
                 user = scanUser.nextLine();
             }
 
+            String[] gameUser = new String[user.length()];
+            for(int j = 0; j < user.length(); j++){
+                System.out.print(" >>>> 첫번째 사람 : ");
+                gameUser[j] = scanUser.nextLine();
+            }
+
         }
 
 
