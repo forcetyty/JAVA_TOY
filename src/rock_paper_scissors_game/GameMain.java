@@ -124,21 +124,18 @@ public class GameMain {
             // 최후의 승자가 남을때 까지 반복
             Scanner scanGamer = new Scanner(System.in);
             Scanner scanUser = new Scanner(System.in);
-            System.out.print(" >>>> 개임할 사용자 수를 입력하세요 : ");
+            System.out.print(" >>>> 개임 할 사용자 수를 입력하세요 : ");
 
             // 초기 게임 인원 설정
             int gamer = scanGamer.nextInt();
-            String user = "";   // 사용자가 입력 값
+
+            String user = "";   // 사용자 입력 값
+            String[] gameUser = new String[user.length()];
             for(int i = 0; i < gamer; i++){
-                System.out.print(" >>>> " + ( i + 1 ) + " 번째 : " );
-                user = scanUser.nextLine();
+                System.out.print(" >>>> " + i + " 번째 사람 : ");
+                gameUser[i] = scanUser.nextLine();
             }
 
-            String[] gameUser = new String[user.length()];
-            for(int j = 0; j < user.length(); j++){
-                System.out.print(" >>>> 첫번째 사람 : ");
-                gameUser[j] = scanUser.nextLine();
-            }
 
         }
 
