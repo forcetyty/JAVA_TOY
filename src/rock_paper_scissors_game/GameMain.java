@@ -1,5 +1,6 @@
 package rock_paper_scissors_game;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -97,6 +98,7 @@ public class GameMain {
             System.out.print(" >>>> 가위, 바위, 보 입력 : ");
             String user = scanUser.nextLine();
 
+            // 게임 승패를 결정하는 로직
             if(user.equals(computerUser)){
                 System.out.println(" >>>> 비겼습니다 - 사용자 " + user + " - 컴퓨터 " + computerUser);
 
