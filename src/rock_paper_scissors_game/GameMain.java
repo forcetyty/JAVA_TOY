@@ -157,9 +157,34 @@ public class GameMain {
 
             }
 
-            if(rockNum > 0 && paperNum > 0 && scissorsNum > 0){
+            if(rockNum > 0 && paperNum > 0 && scissorsNum > 0) {
                 System.out.println(" >>>> 모든 플레이어가 비겼습니다. ");
+
+            }else if(scissorsNum > 0 && paperNum > 0){
+                System.out.println(" >>>> 가위를 낸 플레이어가 이겼습니다.");
+                for(int k = 0; k < gamer; k++){
+                    if(gameUser[k].equals("가위")){
+                        System.out.println(" >>>> " + k + " 번째 플에이어가 이겼습니다.");
+                    }
+                }
+
+            }else if(scissorsNum > 0 && rockNum >0) {
+                System.out.println(" >>>> 바위을 낸 플레이어가 이겼습니다.");
+                for (int k = 0; k < gamer; k++) {
+                    if (gameUser[k].equals("바위")) {
+                        System.out.println(" >>>> " + k + " 번째 플에이어가 이겼습니다.");
+                    }
+                }
+
+            }else if(paperNum > 0 && rockNum > 0){
+                System.out.println(" >>>> 보를 낸 플레이어가 이겼습니다.");
+                for (int k = 0; k < gamer; k++) {
+                    if (gameUser[k].equals("보")) {
+                        System.out.println(" >>>> " + k + " 번째 플에이어가 이겼습니다.");
+                    }
+                }
             }
+
 
         }
 
