@@ -123,6 +123,7 @@ public class GameMain {
             }
 
         }else if( type == 2 ){
+
             // 최후의 승자가 남을때 까지 반복
             Scanner scanGamer = new Scanner(System.in);
             Scanner scanUser = new Scanner(System.in);
@@ -157,6 +158,7 @@ public class GameMain {
 
             }
 
+            // 가위바위보 승패 결정 로직
             if(rockNum > 0 && paperNum > 0 && scissorsNum > 0) {
                 System.out.println(" >>>> 모든 플레이어가 비겼습니다. ");
 
